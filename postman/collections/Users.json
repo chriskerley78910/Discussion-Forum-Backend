@@ -1,0 +1,1043 @@
+{
+	"info": {
+		"_postman_id": "043d4eee-b18b-4ad0-a67d-387300e0743e",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "13014041-043d4eee-b18b-4ad0-a67d-387300e0743e"
+	},
+	"item": [
+		{
+			"name": "Create Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7c23c71-9823-4320-ae44-b28122be2a37",
+						"exec": [
+							"postman.setNextRequest('Get Student')",
+							"",
+							"pm.test(\"Status code is 201 or 409 if the user already exists.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,409]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "11f35a11-094d-47a3-9b46-1c21e1199a33",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"tim.kerley@gmail.com\",\n    \"role\":\"student\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "d90dbf0a-45b6-48a4-9069-bee264f83a0c",
+					"name": "User already exists.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tim.kerley@gmail.com\",\n    \"role\":\"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-/k0qmfwiG9xH6lPhaiDLNNHRzoM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:40:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 409,\n    \"message\": \"A user with that email already exists!\"\n}"
+				},
+				{
+					"id": "69990320-47fb-4ff4-8c3f-0c13f1a77d20",
+					"name": "Invalid role type.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tim.kerley@gmail.com\",\n    \"role\":\"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e-AvggzY+y0dxHQWio6YAuFc59HXQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:47:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"role must be one of the following values: prof, student\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+				},
+				{
+					"id": "1cf4ece3-fcc6-415d-91e8-c764e2c6ee78",
+					"name": "Successful",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tim.kerley@gmail.com\",\n    \"role\":\"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-equ8mC9mt43TMXEjM/J3ad7545A\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:48:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"tim.kerley@gmail.com\",\n    \"role\": \"student\",\n    \"id\": \"31208bb6-1152-43a4-a259-07bb963e5f99\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f837a6a-b503-413b-b0b3-30ccc4476e9f",
+						"exec": [
+							"",
+							"postman.setNextRequest('Create Invalid Role')",
+							"",
+							"pm.test(\"returns the user info for tim.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"     const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.email).to.eql(\"tim.kerley@gmail.com\");",
+							"    pm.expect(responseJson.role).to.eql('student');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "817095e7-1145-4c33-9ff6-342eb39209fb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_email\":\"tim.kerley@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"info"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "8e509ede-d13c-4f62-956a-59dfe4858253",
+					"name": "Get User - That exists.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"tim.kerley@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-7qApPRq5nWWhJjSdUbSYqOqrt/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:11:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"email\": \"christopher.kerley@gmail.com\",\n    \"role\": \"prof\"\n}"
+				},
+				{
+					"id": "6c91d0b5-5aed-4af2-a413-94b7bae15eba",
+					"name": "Get User - User does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"tim.kerley@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-x6Xk10wBVI/ogFvXKzS0sQal4BQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:21:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"User with email unknown@gmail.com does not exist!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Invalid Role",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "365195f4-f526-4f15-a219-488bdc42b6df",
+						"exec": [
+							"postman.setNextRequest('Create Professor')",
+							"",
+							"pm.test(\"Status code is 400 when the role is not valid.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+							"});",
+							"",
+							"pm.cookies"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "dd7c3d9a-ad8e-43d5-8b0d-d6ba81beae51",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"derek.kerley@gmail.com\",\n    \"role\":\"tiger\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Professor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "365195f4-f526-4f15-a219-488bdc42b6df",
+						"exec": [
+							"postman.setNextRequest('Get Professor')",
+							"",
+							"pm.test(\"Status code is 201 or 409 if the user already exists.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,409]);",
+							"});",
+							"",
+							"pm.cookies"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "a90d5e83-5090-4ffc-a4d2-debd29c41c33",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"derek.kerley@gmail.com\",\n    \"role\":\"prof\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Professor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f837a6a-b503-413b-b0b3-30ccc4476e9f",
+						"exec": [
+							"",
+							"postman.setNextRequest('Get Unknown')",
+							"",
+							"pm.test(\"returns the user info for the prof.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"     const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.email).to.eql(\"derek.kerley@gmail.com\");",
+							"    pm.expect(responseJson.role).to.eql('prof');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "00fc7ff4-cc79-426c-b565-54a2a4d49347",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_email\":\"derek.kerley@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"info"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "91a68513-54d2-495f-8967-bd778156f8bb",
+					"name": "Get User - That exists.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"derek.kerley@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-7qApPRq5nWWhJjSdUbSYqOqrt/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:11:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"email\": \"christopher.kerley@gmail.com\",\n    \"role\": \"prof\"\n}"
+				},
+				{
+					"id": "e6f38839-cfba-4b23-a9ed-b4412f6d2956",
+					"name": "Get User - User does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"derek.kerley@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-x6Xk10wBVI/ogFvXKzS0sQal4BQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:21:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"User with email unknown@gmail.com does not exist!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Uknown",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f837a6a-b503-413b-b0b3-30ccc4476e9f",
+						"exec": [
+							"postman.setNextRequest('Get Invalid Email')",
+							"",
+							"pm.test(\"returns the user info for the prof.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([404]);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.message).to.eql(\"User with email \\\"unknown@gmail.com\\\" does not exist!\");",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4d607c61-cf7f-4026-ac78-087c31335602",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_email\":\"unknown@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"info"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "82f19972-201e-49f7-95ba-49383f4bf5d7",
+					"name": "Get User - That exists.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"unknown@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-7qApPRq5nWWhJjSdUbSYqOqrt/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:11:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"email\": \"christopher.kerley@gmail.com\",\n    \"role\": \"prof\"\n}"
+				},
+				{
+					"id": "80d5def6-8bac-4c51-8ac1-55b8ee2d6746",
+					"name": "Get User - User does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"unknown@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-x6Xk10wBVI/ogFvXKzS0sQal4BQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:21:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"User with email unknown@gmail.com does not exist!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Invalid Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f837a6a-b503-413b-b0b3-30ccc4476e9f",
+						"exec": [
+							"",
+							"pm.test(\"returns the user info for the prof.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+							"     const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.error).to.eql(\"Bad Request\");",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "dd3142b9-c840-41eb-b54c-b743be12ba65",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_email\":\"invalid email\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"info"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "bab2747d-fba1-436a-bd4e-5bb15013a649",
+					"name": "Get User - That exists.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"invalid email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-7qApPRq5nWWhJjSdUbSYqOqrt/w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:11:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"email\": \"christopher.kerley@gmail.com\",\n    \"role\": \"prof\"\n}"
+				},
+				{
+					"id": "7b96ead1-ef78-4636-a0c4-fb032e583610",
+					"name": "Get User - User does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_email\":\"invalid email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"info"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-x6Xk10wBVI/ogFvXKzS0sQal4BQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:21:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"User with email unknown@gmail.com does not exist!\"\n}"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,62 @@
+version: '3.4'
+
+services:
+
+  nginx-load-balancer:
+    container_name: forum-nginx-container
+    image: classforum_nginx_image
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.loadbalancer
+    ports:
+      - "80:80"
+    depends_on:
+      - nestjs-app
+    networks:
+      - forum-network
+
+  nestjs-app:
+    image: classforum_server_image
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.server
+    ports:
+      - 3000-3001:3000
+    deploy:
+      restart_policy:
+          condition: on-failure
+          delay: 3s
+          max_attempts: 5
+          window: 60s
+      replicas: 2
+    depends_on:
+      mysql_service:
+        condition: service_healthy
+    networks:
+      - forum-network
+
+  mysql_service:
+    container_name: forum-db-container
+    image: classforum_db_image
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.db
+    networks:
+      - forum-network
+    environment:
+      MYSQL_USER: chris
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+networks:
+  forum-network:
+
+volumes:
+  mysql-data:

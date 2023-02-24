@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <style>
+
+body {
+              background-color:#ffffff;
+              font-family: 'Oswald', sans-serif;
+      }
+p
+{
+  color:#000000;
+  font-size:20px;
+}
+
+#notification{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    background: white;
+    padding: 5pt 15pt;
+    font-size: 16pt;
+}
+center {
+    margin:20pt;
+}
+.visible{
+    opacity: 1;
+}
+.invisible{
+    opacity: 0;
+}
+
+.textBox
+{
+  height:30px;
+  width:300px;
+}
+
+.btn{
+    color: var(--color-btn-text);
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color,background-color,box-shadow,border-color;
+    white-space: nowrap !important;
+    color: blue;
+}
+
+
+button {
+    width: fit-content;
+    border-radius: 3px;
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    height: 52px;
+    cursor: pointer;
+    background-color: #f6f8fa;
+
+   
+    
+}
+
+#invite-link-holder{
+    top: 4em;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    position: absolute;
+}
+
+#invite-link-holder > #invite-title{
+    font-size: 21pt;
+    color: #ff6c38;
+    text-align: left;
+    padding: 6pt 0pt;
+}
+    </style>
+  </head>
+  <body>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'> 
+    <center>
+    <img src="postman-image.jpeg"/>    
+    <div id="invite-link-holder">
+        <div id="invite-title">Workspace Invite Link</div>
+        <a class="btn" href="https://app.getpostman.com/join-team?invite_code=d4ae3994b46467665ffcf25d4fb31e2d&target_code=0280714c3994f82bc03fe469e6a97b5f">
+            https://app.getpostman.com/join-team?invite_code=d4ae3994b46467665ffcf25d4fb31e2d&target_code=0280714c3994f82bc03fe469e6a97b5f
+        </a>
+    </div>
+    </center>
+  </body>
+</html>
+
+

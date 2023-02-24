@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "fc94ce6e-cd98-42d4-a9eb-3237950e3287",
+		"name": "Discussion Questions",
+		"description": "An API for discussion questions posted by the class professor.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "13014041-fc94ce6e-cd98-42d4-a9eb-3237950e3287"
+	},
+	"item": [
+		{
+			"name": "Create Question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85ba39b3-4198-4872-b020-46a6ae46a346",
+						"exec": [
+							"pm.test(\"response should say Hello {{YouInput}}!\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.body",
+							"    pm.expect(pm.response.text()).to.equal('Hello Parham!')",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "1f10e61e-3c84-4082-a368-7e6fe53a6296",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\":\"Hello I am not a professor?!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/questions/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "6139e71c-a438-4d16-8831-5e0200540a27",
+					"name": "By a real professor.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\":\"Hello I am not a professor?!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/questions/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questions",
+								"create"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "137"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"89-XbbkWSuWIhqcXj65UDWBAtf1yfs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:37:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userId\": \"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\": \"Hello I am your professor for the term. Who has signed up for the LSAT?\",\n    \"id\": 7\n}"
+				},
+				{
+					"id": "556a5dd1-5ce5-4aa0-afbb-8c4c84ca0123",
+					"name": "By a non-existant user.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\":\"Hello I am not a professor?!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/questions/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questions",
+								"create"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "97"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"61-EV+IIDiPOzUC6Drk/3EAjOLlNIQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 06:14:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"No user with uuid \\\"187d2a96-b553-488f-80a0-1f948d3b5b28\\\" exists.\"\n}"
+				},
+				{
+					"id": "7cc87977-c8d4-4485-9524-9fe19840059e",
+					"name": "By a non-professor.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\":\"Hello I am not a professor?!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/questions/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questions",
+								"create"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "88"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"58-3hXl88O6rddaSDLD7nmbAWAYNXs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 06:19:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 401,\n    \"message\": \"Only professors are allowed to post discussion questions!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "All Questions",
+			"id": "b671ce0f-b0b8-44bc-a21a-dd694d765a7d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/questions/all",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Question",
+			"id": "c7e59e3b-3121-48b7-bdbf-bff9a0cb0b1b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/questions?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "e4d2d2e0-60c3-411b-9cf5-6028dae74c25",
+					"name": "That does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/questions?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "65"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"41-i8EkXn7gw2o0yvwJCKRTAOs+3Y8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 05:49:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"No question exists with id \\\"111\\\"\"\n}"
+				},
+				{
+					"id": "d2b61acd-7043-44e4-960d-373746eb2a88",
+					"name": "That exists.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/questions?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"questions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "304"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"130-SUfrGKATkDUhY1Za5Hs6Zp0UFxo\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 06:15:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"text\": \"How are you doing today?\",\n    \"userId\": \"\",\n    \"replies\": [\n        {\n            \"id\": 1,\n            \"text\": \"Fake reply text\",\n            \"children\": []\n        },\n        {\n            \"id\": 2,\n            \"text\": \"I am doing okay. Thanks for asking :)\",\n            \"children\": []\n        },\n        {\n            \"id\": 3,\n            \"text\": \"I am doing okay. Thanks for asking :)\",\n            \"children\": [\n                {\n                    \"id\": 4,\n                    \"text\": \"You are so polite!\",\n                    \"children\": []\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

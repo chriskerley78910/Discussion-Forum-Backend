@@ -1,0 +1,697 @@
+{
+	"info": {
+		"_postman_id": "b1d8ffb1-be22-4f61-984d-f6b44344b73e",
+		"name": "Replies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "13014041-b1d8ffb1-be22-4f61-984d-f6b44344b73e"
+	},
+	"item": [
+		{
+			"name": "Reply to a question.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "433af5da-4d8a-4e78-9496-f6f12b963f69",
+						"exec": [
+							"const host = pm.environment.get(\"localhost\");",
+							"const url = host + '/replies/create?id=1'",
+							"const body = {",
+							"    text:'Question reply text',",
+							"    question:1",
+							"}",
+							"pm.sendRequest(url, body, function (err, response) {",
+							"    console.log(response.json());",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3d67c6df-b52e-43cf-9756-5250436f8a67",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"questionId\":1,\n    \"text\":\"I am doing okay. Thanks for asking :)\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/replies/create?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"replies",
+						"create"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "398b7202-67c4-4216-b049-bd5dfa9854f9",
+					"name": "User does not exist.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"questionId\":1,\n    \"text\":\"I am doing okay. Thanks for asking :)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/create?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"create"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "95"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5f-ojCrEMyPqjezk5kn3oBHJyuVTQ8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 06:30:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"No user with id \\\"787d2a96-b553-488f-80a0-1d948d3b5b28\\\" exists.\"\n}"
+				},
+				{
+					"id": "73ffa9bd-f2df-42f1-9197-6561da14e9a7",
+					"name": "Question does not exist.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"questionId\":1,\n    \"text\":\"I am doing okay. Thanks for asking :)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/create?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"create"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-ZkHSNua9MBbaqUE8YWHOOvE/U14\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 08 Jan 2023 06:41:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"No question exists with id \\\"1111\\\".\"\n}"
+				},
+				{
+					"id": "167f719b-1c60-465e-94c3-93a42c0f386b",
+					"name": "That is successful.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"questionId\":1,\n    \"text\":\"I am doing okay. Thanks for asking :)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/create?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"create"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "117"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"75-YcQGaSzXm57fHEQjQs9WmT7o0hY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:23:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userId\": \"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"text\": \"I am doing okay. Thanks for asking :)\",\n    \"question\": 1,\n    \"id\": 15\n}"
+				}
+			]
+		},
+		{
+			"name": "Reply Reply",
+			"id": "29787c8d-58d4-4a2f-abc8-902b2d160b3f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b29\",\n    \"parentId\":3,\n    \"text\":\"You are so polite!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/replies/reply",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"replies",
+						"reply"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "41065985-b45b-4be2-bedd-65679c7f8609",
+					"name": "Successful",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b29\",\n    \"parentId\":3,\n    \"text\":\"You are so polite!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/reply",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"reply"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a2-Mo3qniXwckr1/I6faP7cN7VYkxw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:26:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userId\": \"787d2a96-b553-488f-80a0-1f948d3b5b28\",\n    \"parent\": {\n        \"id\": 3,\n        \"text\": \"I am doing okay. Thanks for asking :)\",\n        \"userId\": \"\"\n    },\n    \"text\": \"You are so polite!\",\n    \"id\": 16\n}"
+				},
+				{
+					"id": "5629db72-a906-4be2-a9a1-91b96782090c",
+					"name": "Parent reply does not exist.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b29\",\n    \"parentId\":3,\n    \"text\":\"You are so polite!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/reply",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"reply"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-glEWDLqg3Mv82rrxBYAyl6p6h2g\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:32:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Reply with id \\\"3423\\\" does not exist!\"\n}"
+				},
+				{
+					"id": "8420a151-2afc-4f7c-bc2e-9940371820f2",
+					"name": "User does not exist.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b29\",\n    \"parentId\":3,\n    \"text\":\"You are so polite!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/reply",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"reply"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "97"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"61-TOwGVytVBu6AerY1GvnTdikoJvI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:37:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"No user with uuid \\\"787d2a96-b553-488f-80a0-1f948d3b5b29\\\" exists.\"\n}"
+				},
+				{
+					"id": "1cfa1361-d525-404c-b54a-0f408e67cbd4",
+					"name": "Reply text is empty.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"787d2a96-b553-488f-80a0-1f948d3b5b29\",\n    \"parentId\":3,\n    \"text\":\"You are so polite!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/replies/reply",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies",
+								"reply"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-1XJ5VdCBPzbIWgi+Pr6JBEFzgkM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:37:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": [\n        \"text should not be empty\"\n    ],\n    \"error\": \"Bad Request\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Reply",
+			"id": "5f745266-b052-4bc7-89f3-5a1ded700a40",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/replies?id=6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"replies"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "87e43d99-4c5f-46cb-bc78-7ed27f23a52d",
+					"name": "Successful",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/replies?id=6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-/NwACXQurouiLgVA9uv/5x8pZQw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:38:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"text\": \"I am doing okay. Thanks for asking :)\",\n    \"userId\": \"\",\n    \"children\": []\n}"
+				},
+				{
+					"id": "1b31470e-13fa-43ed-b3cc-9b840c911af3",
+					"name": "Does not exist.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/replies?id=6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"replies"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-qm5eu5Qn60bq6V6IBxwAUf/KZ7M\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Jan 2023 00:39:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Reply with id \\\"64\\\" does not exist!\"\n}"
+				}
+			]
+		}
+	]
+}

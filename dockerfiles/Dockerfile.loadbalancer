@@ -1,0 +1,22 @@
+FROM nginx
+
+# Remove the default configuration file.
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the configuration file to the etc location.
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the configuration file to the default file location.
+COPY nginx.conf etc/nginx/nginx.conf
+
+# Setup proxy cache directory, only makes sense for static assets.
+RUN mkdir -p /data/nginx/cache \
+    && chown -R nginx:nginx /data/nginx \
+    && chmod -R 774 /data/nginx/cache
+
+
+# Expose HTTP
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

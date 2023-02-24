@@ -1,0 +1,28 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    # - duration: 120
+    #   arrivalRate: 5
+    #   rampTo: 50
+    #   name: Ramp up load
+    # - duration: 60
+    #   arrivalRate: 400
+    #   name: Max sustainable load
+    - duration: 60
+      arrivalRate: 4000
+      name: Overload
+
+
+scenarios:
+  - name: "Get nothing"
+    flow:
+      - get:
+          url: "/"
+  # - name: "POST nothing"
+  #   flow:
+  #     - post:
+  #         url: "/"
+  - name: "GET load"
+    flow:
+      - get:
+          url: "/load"
