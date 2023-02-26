@@ -27,7 +27,7 @@ import { ConfigModule } from '@nestjs/config';
       port: 3306,
       username: 'chris',
       password: 'password',
-      database: 'chris',
+      database: 'forum',
       entities: [QuestionEntity, ReplyEntity, UserEntity],
       synchronize: true
     })
